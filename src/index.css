@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@theme {
+  /* New Teal/Emerald Color Palette */
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
+  
+  /* Accent Colors */
+  --color-accent-gold: #f59e0b;
+  --color-accent-coral: #fb7185;
+  --color-accent-navy: #1e3a5f;
+  
+  /* Neutral Colors */
+  --color-dental-dark: #0f172a;
+  --color-dental-gray: #64748b;
+  --color-dental-light: #f8fafc;
+  
+  --font-family-sans: Inter, system-ui, sans-serif;
+  --font-family-display: Poppins, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-family-sans);
+    color: #111827;
+    background-color: #ffffff;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hide scrollbar but keep scroll functionality */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-primary-600);
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-primary-700);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(13, 148, 136, 0.4);
+  }
+  
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary-600);
+    border: 2px solid var(--color-primary-600);
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--color-primary-600);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .btn-white {
+    background-color: white;
+    color: var(--color-primary-700);
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-white:hover {
+    background-color: var(--color-primary-50);
+    transform: translateY(-2px);
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary-600);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .font-display {
+  font-family: 'Cairo', var(--font-family-display), sans-serif;
+}
+
+/* Flip icons and arrows in RTL */
+.rtl .flip-rtl {
+  transform: scaleX(-1);
+}
+
+/* RTL specific adjustments */
+.rtl .ml-auto { margin-right: auto; margin-left: 0; }
+.rtl .mr-auto { margin-left: auto; margin-right: 0; }
+.rtl .text-left { text-align: right; }
+.rtl .text-right { text-align: left; }
+
+/* Animation direction flip for RTL */
+.rtl [data-motion-initial*="x: -"] {
+  --motion-initial-x: 50;
+}
+.rtl [data-motion-initial*="x: 50"] {
+  --motion-initial-x: -50;
+}
+
+/* RTL padding/margin adjustments */
+.rtl .ps-4 { padding-inline-start: 1rem; }
+.rtl .pe-4 { padding-inline-end: 1rem; }
+.rtl .ms-4 { margin-inline-start: 1rem; }
+.rtl .me-4 { margin-inline-end: 1rem; }
+
+/* RTL list styles */
+.rtl ul {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+/* RTL flex direction */
+.rtl .flex-row-reverse-rtl {
+  flex-direction: row-reverse;
+}
+
+/* Arabic Font - already imported at top */
+.rtl body,
+.rtl * {
+  font-family: 'Cairo', var(--font-family-sans), sans-serif;
+}
+
+/* Toast animations */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}

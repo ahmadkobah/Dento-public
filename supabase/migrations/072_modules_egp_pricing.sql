@@ -1,0 +1,20 @@
+-- Migration 072: Dynamic Currency Conversion
+-- 
+-- APPROACH CHANGE: Instead of storing per-currency price columns in every table,
+-- we use a dynamic currency converter that fetches live exchange rates from the internet.
+--
+-- All module prices are stored in USD only (base_price_monthly, base_price_yearly).
+-- At invoice generation time, the client fetches the current exchange rate and converts.
+-- The exchange rate used is recorded in the invoice notes for audit purposes.
+--
+-- subscription_plans still keeps its EGP columns (price_monthly_egp, price_yearly_egp)
+-- as platform-curated fixed prices that override dynamic conversion.
+--
+-- Edge function: currency-rates — provides server-side exchange rate lookups
+-- Client utility: src/utils/currencyConverter.js — client-side with caching
+--
+-- Supported currencies: USD, EGP, EUR, GBP, SAR, AED, TRY, KWD
+-- Rate source: https://api.exchangerate-api.com/v4/latest/USD (free, no key)
+-- Cache: 1 hour (both server and client)
+--
+-- NO SCHEMA CHANGES NEEDED — this migration documents the approach only.

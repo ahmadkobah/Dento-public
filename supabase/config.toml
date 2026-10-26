@@ -1,0 +1,75 @@
+# Supabase Edge Functions Configuration
+# https://supabase.com/docs/guides/functions/config
+# 
+# JWT verification is disabled at gateway level because we validate
+# manually inside functions using supabase.auth.getUser(token)
+# This prevents "Invalid JWT" errors from gateway-level validation
+
+[functions.tenant-modules]
+verify_jwt = false
+
+[functions.domain-api]
+verify_jwt = false
+
+[functions.tenant-management]
+verify_jwt = false
+
+[functions.dashboard-stats]
+verify_jwt = false
+
+[functions.monitoring-api]
+verify_jwt = false
+
+[functions.api-keys]
+verify_jwt = false
+
+[functions.audit-api]
+verify_jwt = false
+
+[functions.calculate-commission]
+verify_jwt = false
+
+[functions.deployment-api]
+verify_jwt = false
+
+[functions.form-submission-api]
+verify_jwt = false
+
+[functions.generate-invoice-pdf]
+verify_jwt = false
+
+[functions.generate-sitemap]
+verify_jwt = false
+
+[functions.media-upload]
+verify_jwt = false
+
+[functions.optimize-image]
+verify_jwt = false
+
+[functions.page-builder-api]
+verify_jwt = false
+
+[functions.process-payment]
+verify_jwt = false
+
+[functions.send-notification]
+verify_jwt = false
+
+[functions.subscription-api]
+verify_jwt = false
+
+[functions.template-api]
+verify_jwt = false
+
+[functions.tenant-impersonate]
+verify_jwt = false
+
+[functions.verify-domain]
+verify_jwt = false
+
+[functions.webhooks-api]
+verify_jwt = false
+
+[functions.website-settings-api]
+verify_jwt = false
